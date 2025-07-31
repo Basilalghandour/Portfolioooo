@@ -129,6 +129,7 @@
       display: flex; /* Use flexbox for layout within the card */
       flex-direction: column; /* Stack items vertically */
       align-items: center; /* Center content horizontally */
+      min-height: 450px; /* Increased vertical space for the card */
     }
 
     .project-card:hover {
@@ -154,7 +155,7 @@
 
     .project-screenshot { /* New style for project screenshots */
       width: 100%; /* Make image take full width of card */
-      height: 180px; /* Fixed height for consistency */
+      height: 300px; /* Increased height for consistency */
       object-fit: cover; /* Cover the area, cropping if necessary */
       border-radius: 8px; /* Slightly less rounded than card */
       margin-bottom: 15px; /* Space between image and text */
@@ -173,11 +174,13 @@
       background-color: #1d1d1d;
       border-radius: 10px;
       padding: 20px;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
     }
 
     .skill-card:hover {
       transform: translateY(-5px);
+      background-color: #2a2a2a;
+      box-shadow: 0 8px 16px rgba(0, 255, 225, 0.2);
     }
 
     .skill-card h4 {
@@ -351,7 +354,7 @@
     /* Responsive Design */
     @media (min-width: 1200px) {
       .projects {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for large screens */
       }
       .skills-grid {
         grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
@@ -429,7 +432,7 @@
       <a href="#projects" class="btn">View Projects</a>
     </div>
     <div class="hero-image">
-      <img class="me" src="mee.jpg" alt="Developer photo">
+      <img class="me" src="me.jpg" alt="Developer photo">
     </div>
   </section>
 
@@ -482,11 +485,10 @@
     <h2 class="section-title">Recent Projects</h2>
     <div class="projects">
       <div class="project-card">
-        <img src="https://placehold.co/300x200/1a1a1a/00ffe1?text=Portfolio+Screenshot" alt="Portfolio Website Screenshot" class="project-screenshot">
-        <h3>Portfolio Website</h3>
-        <p>A sleek portfolio site built with HTML, CSS, and JavaScript to showcase developer skills.</p>
+        <img src="p11.png" alt="Portfolio Website Screenshot" class="project-screenshot">
+        <h3>Fashionista</h3>
+        <p>A Sleek Aesthetic Clothing Store made With modern themes and designs to deliver a catchy feeling for the client.</p>
         <br>
-        <p class="p1">(You are currently viewing this project!)</p>
       </div>
       <a href="https://basilalghandour.pythonanywhere.com/home" target="_blank" class="card-link">
         <div class="project-card">

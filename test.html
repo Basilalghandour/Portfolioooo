@@ -173,11 +173,13 @@
       background-color: #1d1d1d;
       border-radius: 10px;
       padding: 20px;
-      transition: transform 0.3s;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
     }
 
     .skill-card:hover {
       transform: translateY(-5px);
+      background-color: #2a2a2a;
+      box-shadow: 0 8px 16px rgba(0, 255, 225, 0.2);
     }
 
     .skill-card h4 {
@@ -351,7 +353,7 @@
     /* Responsive Design */
     @media (min-width: 1200px) {
       .projects {
-        grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for large screens */
       }
       .skills-grid {
         grid-template-columns: repeat(4, 1fr); /* 4 columns for large screens */
@@ -429,7 +431,7 @@
       <a href="#projects" class="btn">View Projects</a>
     </div>
     <div class="hero-image">
-      <img class="me" src="mee.jpg" alt="Developer photo">
+      <img class="me" src="me.jpg" alt="Developer photo">
     </div>
   </section>
 
