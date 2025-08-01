@@ -26,7 +26,9 @@
 
     /* Header */
     header {
-      background-color: transparent;
+      background-color: rgba(14, 14, 14, 0.7); /* Semi-transparent background for glassy effect */
+      backdrop-filter: blur(10px); /* The "glassy" blur effect */
+      -webkit-backdrop-filter: blur(10px); /* For Safari support */
       padding: 30px 60px;
       position: fixed;
       width: 100%;
@@ -215,6 +217,13 @@
       overflow: hidden;
       margin-bottom: 15px;
     }
+    
+    /* Ensure the clickable area for the image fills the container */
+    .project-card .project-screenshot-container a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
 
     .project-card .project-links-overlay {
       position: absolute;
@@ -306,18 +315,136 @@
     /* Contact Section */
     .contact {
       text-align: center;
+      position: relative;
+    }
+    
+    .contact-form-container {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start; /* Align items to the top */
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .contact-text {
+      max-width: 500px;
+      text-align: left;
+    }
+    
+    .contact-email {
+      display: flex;
+      align-items: center;
+      gap: 15px; /* Adjust spacing between icon and email */
+      margin-top: 20px;
     }
 
-    .contact a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 28px;
-      background-color: #00ffe1;
-      color: #000;
-      font-weight: 600;
-      border-radius: 5px;
+    .contact-email .email-link {
+      font-size: 1.2rem;
+      color: #00ffe1; /* Match the aqua color of the icon */
       text-decoration: none;
+      transition: color 0.3s ease;
     }
+
+    .contact-email .email-link:hover {
+      color: white; /* Change color on hover for a subtle effect */
+    }
+    
+    .contact-text .email-icon {
+      font-size: 4rem;
+      color: #00ffe1;
+      margin-top: 20px;
+    }
+    
+    .contact-form {
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .contact-form form {
+      background-color: #1d1d1d;
+      padding: 30px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px; /* Taller padding */
+      border: 1px solid #333;
+      background-color: #0e0e0e;
+      color: white;
+      border-radius: 8px; /* Slightly more modern border-radius */
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #00ffe1; /* Aqua border on focus */
+    }
+
+    .contact-form textarea {
+      min-height: 200px; /* Taller textarea */
+    }
+
+    .contact-form button {
+      padding: 15px 28px; /* Taller button padding */
+      background-color: #00ffe1;
+      color: #0e0e0e;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    
+    .contact-form button:hover {
+      background-color: #00c3b7;
+      transform: translateY(-2px);
+    }
+    
+    .contact-text h3 {
+      font-size: 1.8rem;
+      color: #00ffe1;
+      margin-bottom: 15px;
+    }
+
+    /* Back to Top button styles */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #00ffe1;
+      color: #0e0e0e;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      border: none;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      background-color: #00c3b7;
+      transform: scale(1.1);
+    }
+
 
     /* Footer */
     footer {
@@ -496,6 +623,25 @@
       .projects, .skills-grid {
         grid-template-columns: 1fr; /* Single column for small screens */
       }
+      
+      .contact-form-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .contact-text, .contact-form {
+        max-width: 100%;
+        text-align: center;
+      }
+      
+      .contact-email {
+        justify-content: center; /* Center the email link on mobile */
+      }
+      
+      .contact-text .email-icon {
+        margin-top: 15px;
+        font-size: 3rem; /* Smaller icon on mobile */
+      }
     }
   </style>
 </head>
@@ -515,7 +661,7 @@
   </div>
 
   <header>
-    <div class="logo">DevFolio</div>
+    <div class="logo">GhandouR</div>
     <nav>
       <a href="#hero">About</a>
       <a href="#skills">Skills</a>
@@ -527,7 +673,7 @@
   <section class="hero" id="hero">
     <div class="hero-content">
       <h1>Hi, I'm GhandouR — Web Developer</h1>
-      <p>I create beautiful, responsive websites and web applications. I specialize in modern tech stacks like React, Node.js, and Flask.</p>
+      <p>Specializing in responsive, SEO-friendly websites built with modern tech like React, Tailwind CSS, and Flask. I focus on clean design, fast performance, and user experience to help businesses grow online through scalable, high-quality web solutions.</p>
       <a href="#projects" class="btn">View Projects</a>
     </div>
     <div class="hero-image">
@@ -583,69 +729,87 @@
     <section id="projects">
     <h2 class="section-title">Recent Projects</h2>
     <div class="projects">
-      <!-- Project Card 1 -->
       <div class="project-card">
-        <div class="project-screenshot-container">
-          <img src="p11.png" alt="Portfolio Website Screenshot" class="project-screenshot">
-          <div class="project-links-overlay">
-            <a href="#" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
-            <a href="#" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+        <a href="https://basilalghandour.github.io/Clothing/" target="_blank" class="card-link">
+          <div class="project-screenshot-container">
+            <img src="p11.png" alt="Portfolio Website Screenshot" class="project-screenshot">
+            <div class="project-links-overlay">
+              <a href="https://basilalghandour.github.io/Clothing/" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
+              <a href="https://github.com/Basilalghandour/Clothing" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+            </div>
           </div>
-        </div>
+        </a>
         <h3>Fashionista</h3>
         <p>A Sleek Aesthetic Clothing Store made With modern themes and designs to deliver that catchy feeling for the client.</p>
       </div>
-      <!-- Project Card 2 -->
       <div class="project-card">
-        <div class="project-screenshot-container">
-          <a href="https://basilalghandour.pythonanywhere.com/home" target="_blank" class="card-link">
+        <a href="https://basilalghandour.github.io/Cosmetics/" target="_blank" class="card-link">
+          <div class="project-screenshot-container">
             <img src="p2.png" alt="Full-Stack Market Application Screenshot" class="project-screenshot">
-          </a>
-          <div class="project-links-overlay">
-            <a href="https://basilalghandour.pythonanywhere.com/home" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
-            <!-- Assuming there's a github link for this project, I'm using a placeholder -->
-            <a href="#" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+            <div class="project-links-overlay">
+              <a href="https://basilalghandour.github.io/Cosmetics/" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
+              <a href="https://github.com/Basilalghandour/Cosmetics" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+            </div>
           </div>
-        </div>
+        </a>
         <h3>Lunera Beauty</h3>
         <p>A complete Professional Cosmetics brand themed and branded by me with SEO optimization as Mobile Responsiveness </p>
       </div>
-      <!-- Project Card 3 -->
       <div class="project-card">
-        <div class="project-screenshot-container">
-          <a href="https://basilalghandour.github.io/HTML-CSS/" target="_blank" class="card-link">
+        <a href="https://basilalghandour.github.io/David-Gym--Coach/" target="_blank" class="card-link">
+          <div class="project-screenshot-container">
             <img src="p3.png" alt="Youtube UI Clone Screenshot" class="project-screenshot">
-          </a>
-          <div class="project-links-overlay">
-            <a href="https://basilalghandour.github.io/HTML-CSS/" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
-            <a href="https://github.com/basilalghandour/HTML-CSS" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+            <div class="project-links-overlay">
+              <a href="https://basilalghandour.github.io/David-Gym--Coach/" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
+              <a href="https://github.com/Basilalghandour/David-Gym--Coach" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+            </div>
           </div>
-        </div>
+        </a>
         <h3>David's SAAS</h3>
         <p>David's Profile could be your Personalized Portfolio or SAAS application.</p>
       </div>
-      <!-- Project Card 4 -->
       <div class="project-card">
-        <div class="project-screenshot-container">
-          <img src="p4.png" alt="Project 4 Screenshot" class="project-screenshot">
-          <div class="project-links-overlay">
-            <a href="#" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
-            <a href="#" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+        <a href="https://basilalghandour.github.io/Electro-Market/" target="_blank" class="card-link">
+          <div class="project-screenshot-container">
+            <img src="p4.png" alt="Project 4 Screenshot" class="project-screenshot">
+            <div class="project-links-overlay">
+              <a href="https://basilalghandour.github.io/Electro-Market/" target="_blank"><i class="fa-solid fa-eye"></i>View Project</a>
+              <a href="https://github.com/Basilalghandour/Electro-Market" target="_blank"><i class="fab fa-github"></i>Github Source</a>
+            </div>
           </div>
-        </div>
+        </a>
         <h3>Electro Market</h3>
         <p>E-Commerce Landing page designed with simple and Dynamic animations</p>
       </div>
     </div>
   </section>
 
-
-  
   <section class="contact" id="contact">
     <h2 class="section-title">Get In Touch</h2>
-    <p>Let’s build something amazing together. You can reach out to me via email.</p>
-    <a href="mailto:your_email@example.com">Contact Me</a>
+    <div class="contact-form-container">
+      <div class="contact-text">
+        <h3>Looking for a website that truly reflects your brand?</h3>
+        <p>Want a fast, responsive design that converts visitors into loyal clients?
+Tell me a bit about your project—what you’re aiming to achieve, your ideal audience, and any must-have features—and let’s build your perfect online presence together. Fill out the form below and I’ll be in touch to discuss your vision!</p>
+        <div class="contact-email">
+          <i class="fas fa-envelope-open-text email-icon"></i>
+          <a href="mailto:basilelghandour@gmail.com" class="email-link">basilelghandour@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/basilelghandour@gmail.com" method="POST">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <textarea name="message" placeholder="Your Message" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
   </section>
+
+  <button class="back-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <footer>
     &copy; 2025 GhandouR Developer. All rights reserved.
@@ -704,6 +868,24 @@
         observer.observe(skillCards[0]);
       }
     });
+
+    // Back to top button logic
+    const backToTopButton = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) { // Show the button after scrolling 200px
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
   </script>
 </body>
 </html>
